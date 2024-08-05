@@ -1,0 +1,21 @@
+# Esse arquivo é relativo ao catálogo de projetos da gupy
+# documentacao completa https://backstage.tools.internal.gupy.io/docs/default/Component/projects-catalog
+# O mínimo que cada repositório deve incluir no catálogo de projetos é um componente do System Model do backstage 
+# consulte detalhes na documentação do catalogo de projeto ou em https://backstage.io/docs/features/software-catalog/system-model/
+# após preenchimento , apagar os comentários
+#
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${REPOSITORY_SLUG}                              # Alterar : Nome do projeto ou repositório
+  description: Description                              # Alterar : Descrição do projeto
+  annotations:
+    github.com/project-slug: gupy-io/${REPOSITORY_SLUG} # Alterar : Nome do repositório
+    backstage.io/techdocs-ref: dir:.
+  tags:
+      - nest                                            # Alterar : tags de principais frameworks,linguagem, runtime (k8s,lambda,ecs,cloud function, cloud run)
+      - typescript                                      # Alterar : tags de principais frameworks,linguagem, runtime (k8s,lambda,ecs,cloud function, cloud run)
+spec:
+  type: service                                         # Alterar : 'service', 'website' ou 'library'
+  owner: catalogo-incompleto                            # Confome nome do time no GitHub ('qualificacao', 'vagas', 'candidates', por exemplo)
+  lifecycle: production                                 # Alterar : experimental, production, deprecated
