@@ -1,0 +1,35 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: "target-iceberg"
+default_environment: test
+environments:
+- name: test
+plugins:
+  extractors:
+  - name: tap-smoke-test
+    variant: meltano
+    pip_url: git+https://github.com/meltano/tap-smoke-test.git
+    config:
+      streams:
+      - stream_name: animals
+        input_filename: https://raw.githubusercontent.com/meltano/tap-smoke-test/main/demo-data/animals-data.jsonl
+
+  loaders:
+  - name: "target-iceberg"
+    namespace: "target_iceberg"
+    pip_url: -e .
+    capabilities:
+    - about
+    - stream-maps
+    - record-flattening
+
+    settings:
+    - name: catalog_type
+    - name: catalog_name
+    - name: catalog_uri
+    - name: credential
+    - name: database
+
+    # TODO: Declare required settings here:
+    settings_group_validation:
+    - []
