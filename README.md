@@ -76,6 +76,12 @@ poetry install
 
 ### Create and Run Tests
 
+Start by setting up the local catalog environment:
+
+```bash
+docker compose up
+```
+
 Create tests within the `tests` subfolder and
   then run:
 

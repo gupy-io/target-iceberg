@@ -21,7 +21,6 @@ class TargetIceberg(Target):
             th.StringType,
             secret=True,  # Flag config as protected.
             description="Rest catalog user credential",
-            required=True,
         ),
         th.Property(
             "catalog_uri",

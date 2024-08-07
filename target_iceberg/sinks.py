@@ -9,6 +9,7 @@ from pyiceberg.catalog import load_catalog
 from pyiceberg.exceptions import NamespaceAlreadyExistsError
 from singer_sdk.sinks import BatchSink
 from singer_sdk import Target
+from target_iceberg.catalog import get_catalog_config
 
 logger = logging.getLogger("iceberg_sink")
 logger.setLevel(logging.DEBUG)
@@ -43,7 +44,7 @@ class IcebergSink(BatchSink):
             context: Stream partition or context dictionary.
         """
         catalog = load_catalog(
-            self.config.get("catalog_name"), **self._get_catalog_config()
+            self.config.get("catalog_name"), **get_catalog_config(self.config)
         )
 
         try:
@@ -59,11 +60,13 @@ class IcebergSink(BatchSink):
                 context["records"], TIMESTAMP_COLUMN, STARTED_AT
             )
             records: pa.Table = pa.Table.from_pylist(records_list)
+            table_tuple = (self.config["database"], self.stream_name)
 
-            if catalog.table_exists(f"{self.config['database']}.{self.stream_name}"):
+            if table_tuple in catalog.list_tables(self.config["database"]):
                 logger.info(
                     "Appending to table", extra={"table_name": self.stream_name}
                 )
+                breakpoint()
 
                 table = catalog.load_table(
                     f"{self.config['database']}.{self.stream_name}"
@@ -74,18 +77,6 @@ class IcebergSink(BatchSink):
             else:
                 msg = f"Table {self.stream_name} should exist in database with the following schema: {records.schema.to_string()}"
                 raise ValueError(msg)
-
-    def _get_catalog_config(
-        self,
-    ) -> dict:
-        return {
-            "type": self.config.get("catalog_type"),
-            "uri": self.config.get("catalog_uri"),
-            "credential": self.config.get("credential"),
-            "warehouse": self.config.get("catalog_name"),
-            "py-io-impl": "pyiceberg.io.pyarrow.PyArrowFileIO",
-            "s3.endpoint": self.config.get("s3_endpoint"),
-        }
 
     def _add_timestamp_column(
         self, records: list[dict], column_name: str, timestamp: datetime
