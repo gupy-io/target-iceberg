@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime, timezone
+
 import pyarrow as pa
 from pyiceberg.catalog import load_catalog
 from pyiceberg.exceptions import NamespaceAlreadyExistsError
-from singer_sdk.sinks import BatchSink
 from singer_sdk import Target
+from singer_sdk.sinks import BatchSink
+
 from target_iceberg.catalog import get_catalog_config
 
 logger = logging.getLogger("iceberg_sink")
