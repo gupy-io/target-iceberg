@@ -66,7 +66,6 @@ class IcebergSink(BatchSink):
                 logger.info(
                     "Appending to table", extra={"table_name": self.stream_name}
                 )
-                breakpoint()
 
                 table = catalog.load_table(
                     f"{self.config['database']}.{self.stream_name}"
