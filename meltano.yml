@@ -31,4 +31,4 @@ plugins:
     - name: database
 
     settings_group_validation:
-    - [catalog_type,catalog_name,database,credential]
+    - [catalog_type,catalog_name,database]

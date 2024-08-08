@@ -19,8 +19,25 @@ class TargetIceberg(Target):
         th.Property(
             "credential",
             th.StringType,
-            secret=True,  # Flag config as protected.
+            secret=True,
             description="Rest catalog user credential",
+        ),
+        th.Property(
+            "s3_endpoint",
+            th.StringType,
+            description="s3 endpoint",
+        ),
+        th.Property(
+            "s3_access_key_id",
+            th.StringType,
+            secret=True,
+            description="AWS access key id",
+        ),
+        th.Property(
+            "s3_secret_access_key",
+            th.StringType,
+            secret=True,
+            description="AWS secret access key id",
         ),
         th.Property(
             "catalog_uri",
