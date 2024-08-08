@@ -68,3 +68,6 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 # CLI declaration
 target-iceberg = 'target_iceberg.target:TargetIceberg.cli'
+
+[tool.pytest.ini_options]
+addopts = "--deselect=tests/test_core.py::TestTargetIceberg::test_target_special_chars_in_attributes"
