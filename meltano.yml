@@ -29,6 +29,9 @@ plugins:
     - name: catalog_uri
     - name: credential
     - name: database
+    - name: s3_access_key_id
+    - name: s3_secret_access_key
+    - name: s3_endpoint
 
     settings_group_validation:
     - [catalog_type,catalog_name,database]
