@@ -61,22 +61,20 @@ class IcebergSink(BatchSink):
             records_list = self._add_timestamp_column(
                 context["records"], TIMESTAMP_COLUMN, STARTED_AT
             )
-            records: pa.Table = pa.Table.from_pylist(records_list)
-            table_tuple = (self.config["database"], self.stream_name)
-
-            if table_tuple in catalog.list_tables(self.config["database"]):
+            
+            if table := catalog.load_table(f"{self.config['database']}.{self.stream_name}"):
+                
                 logger.info(
                     "Appending to table", extra={"table_name": self.stream_name}
                 )
-
-                table = catalog.load_table(
-                    f"{self.config['database']}.{self.stream_name}"
-                )
-
+                
+                schema = table.schema().as_arrow()
+                records: pa.Table = pa.Table.from_pylist(records_list, schema=schema)
+                
                 table.append(records)
-
+            
             else:
-                msg = f"Table {self.stream_name} should exist in database with the following schema: {records.schema.to_string()}"
+                msg = f"Table {self.stream_name} should exist in database"
                 raise ValueError(msg)
 
     def _add_timestamp_column(
