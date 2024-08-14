@@ -10,7 +10,6 @@ from target_iceberg.target import TargetIceberg
 from target_iceberg.catalog import get_catalog_config
 import uuid
 import pytest
-import contextlib
 import pyarrow as pa
 
 
@@ -143,8 +142,7 @@ class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
             "demo",
             **get_catalog_config(SAMPLE_CONFIG),
         )
-        with contextlib.suppress(NamespaceAlreadyExistsError):
-            catalog.create_namespace(SAMPLE_CONFIG["database"])
+
         for table, schema in REQUIRED_TABLES.items():
             catalog.create_table(
                 f"{SAMPLE_CONFIG['database']}.{table}",
