@@ -48,15 +48,7 @@ class IcebergSink(BatchSink):
         catalog = load_catalog(
             self.config.get("catalog_name"), **get_catalog_config(self.config)
         )
-
-        try:
-            catalog.create_namespace(self.config["database"])
-        except NamespaceAlreadyExistsError:
-            logger.info(
-                "Database already exists",
-                extra={"database": self.config.get("database")},
-            )
-
+        
         if context.get("records"):
             records_list = self._add_timestamp_column(
                 context["records"], TIMESTAMP_COLUMN, STARTED_AT
