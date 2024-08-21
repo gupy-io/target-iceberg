@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
 
 import pyarrow as pa
 from pyiceberg.catalog import load_catalog
-from pyiceberg.exceptions import NamespaceAlreadyExistsError
+
 from singer_sdk import Target
 from singer_sdk.sinks import BatchSink
 
@@ -21,9 +20,6 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 BATCH_SIZE = 10000
-STARTED_AT = datetime.now(tz=timezone.utc)
-TIMESTAMP_COLUMN = "_sdc_started_at"
-
 
 class IcebergSink(BatchSink):
     """Iceberg target sink class."""
@@ -50,9 +46,6 @@ class IcebergSink(BatchSink):
         )
 
         if context.get("records"):
-            records_list = self._add_timestamp_column(
-                context["records"], TIMESTAMP_COLUMN, STARTED_AT
-            )
 
             if table := catalog.load_table(f"{self.config['database']}.{self.stream_name}"):
 
@@ -60,18 +53,13 @@ class IcebergSink(BatchSink):
                     "Appending to table", extra={"table_name": self.stream_name}
                 )
 
-                schema = table.schema().as_arrow()
-                records: pa.Table = pa.Table.from_pylist(records_list, schema=schema)
+                schema = table.schema()
 
+                records: pa.Table = pa.Table.from_pylist(context["records"])
+
+                records = records.cast(schema.as_arrow())
                 table.append(records)
 
             else:
                 msg = f"Table {self.stream_name} should exist in database"
                 raise ValueError(msg)
-
-    def _add_timestamp_column(
-        self, records: list[dict], column_name: str, timestamp: datetime
-    ) -> list[dict]:
-        new_records = [record | {column_name: timestamp} for record in records]
-
-        return new_records
