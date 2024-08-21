@@ -1,0 +1,12 @@
+{"type": "STATE", "value": {}}
+{"type": "SCHEMA", "stream": "data_partitioning", "schema": {"properties": {"id": {"type": ["integer"]}, "created_at": {"type": ["string"]}}, "type": "object", "required": ["id"]}, "key_properties": ["id"]}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 1, "created_at": "2021-09-22T01:01:05"}}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 2, "created_at": "2021-09-22T18:47:52"}}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 3, "created_at": "2021-09-22T17:41:48"}}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 4, "created_at": "2021-09-22T16:51:46"}}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 5, "created_at": "2021-05-13T02:27:58"}}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 6, "created_at": "2021-05-13T10:03:16"}}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 7, "created_at": "2021-05-13T08:45:41"}}
+{"type": "RECORD", "stream": "data_partitioning", "record": {"id": 7, "created_at": "2021-06-13T08:45:41"}}
+{"type": "STATE", "value": {"bookmarks": {"data_partitioning": {}}}}
+{"type": "STATE", "value": {"bookmarks": {"data_partitioning": {}, "users": {}}}}

@@ -1,19 +1,37 @@
 """Tests standard target features using the built-in SDK tests library."""
 
 from __future__ import annotations
+from pathlib import Path
 
+from pyiceberg.partitioning import PartitionSpec, PartitionField
+from pyiceberg.transforms import DayTransform
+
+from pyiceberg.schema import Schema
 from pyiceberg.catalog import load_catalog
-from pyiceberg.exceptions import NamespaceAlreadyExistsError
+from pyiceberg.types import (
+    NestedField,
+    LongType,
+    StringType,
+    ListType,
+    StructType,
+    TimestampType
+)
+
 from singer_sdk.testing import get_target_test_class
+from singer_sdk.testing.templates import TargetFileTestTemplate
+from singer_sdk.testing.suites import TestSuite
 
 from target_iceberg.target import TargetIceberg
 from target_iceberg.catalog import get_catalog_config
 import uuid
 import pytest
-import pyarrow as pa
 
 
-SAMPLE_CONFIG = {
+from . import data_files
+from importlib.resources import files
+
+
+SAMPLE_CONFIG ={
     "catalog_uri": "http://localhost:8181",
     "catalog_name": "demo",
     "catalog_type": "rest",
@@ -23,114 +41,123 @@ SAMPLE_CONFIG = {
     "s3_secret_access_key": "password",
 }
 
-REQUIRED_TABLES = {
-    "test_array_data": pa.schema(
-        [
-            ("Id", pa.int64()),
-            ("id", pa.int64()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-            ("fruit.element", pa.string()),
-            ("fruits", pa.list_(pa.string())),
-        ]
+catalog = load_catalog(
+    "demo",
+    **{
+        "uri": "http://127.0.0.1:8181",
+        "s3.endpoint": "http://127.0.0.1:9000",
+        "py-io-impl": "pyiceberg.io.pyarrow.PyArrowFileIO",
+        "s3.access-key-id": "admin",
+        "s3.secret-access-key": "password",
+    }
+)
+
+REQUIRED_TABLES ={
+    "test_array_data": Schema(
+        NestedField(field_id=2,name="id", field_type=LongType()),
+        NestedField(field_id=4,name="fruits", field_type=ListType(element_id=5, element_type=StringType()))
     ),
-    "test_strings_in_arrays": pa.schema(
-        [
-            ("id", pa.int64()),
-            ("strings", pa.list_(pa.string())),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "test_strings_in_arrays": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="strings", field_type=ListType(element_id=3, element_type=StringType()))
     ),
-    "test_strings_in_objects": pa.schema(
-        [
-            ("id", pa.int64()),
-            ("string", pa.list_(pa.string())),
-            (
-                "info",
-                pa.struct([("name", pa.string()), ("value", pa.string())]),
+    "test_strings_in_objects": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="string", field_type=ListType(element_id=3, element_type=StringType())),
+        NestedField(
+            field_id=4,
+            name="info",
+            field_type=StructType(
+                NestedField(field_id=5,name="name", field_type=StringType()),
+                NestedField(field_id=6, name="value", field_type=StringType())
             ),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+        ),
     ),
-    "test_optional_attributes": pa.schema(
-        [
-            ("id", pa.int64()),
-            ("optional", pa.string()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "test_optional_attributes": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="optional", field_type=StringType())
     ),
-    "record_missing_fields": pa.schema(
-        [
-            ("id", pa.int64()),
-            ("optional", pa.string()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "record_missing_fields": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="optional", field_type=StringType())
     ),
-    "test_duplicate_records": pa.schema(
-        [
-            ("id", pa.int64()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-            ("metric", pa.int64()),
-        ]
+    "test_duplicate_records": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="metric", field_type=LongType())
     ),
-    "test_strings": pa.schema(
-        [
-            ("Id", pa.int64()),
-            ("id", pa.int64()),
-            ("info", pa.string()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "test_strings": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="string", field_type=StringType()),
+        NestedField(field_id=3,name="info", field_type=StringType())
     ),
-    "test_no_pk": pa.schema(
-        [
-            ("id", pa.int64()),
-            ("metric", pa.int64()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "test_no_pk": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="metric", field_type=LongType())
     ),
-    "test_schema_updates": pa.schema(
-        [
-            ("id", pa.int64()),
-            ("a1", pa.int64()),
-            ("a2", pa.string()),
-            ("a3", pa.bool_()),
-            ("a4", pa.struct([("id", pa.int64()), ("value", pa.int64())])),
-            ("a5", pa.list_(pa.string())),
-            ("a6", pa.int64()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "test_schema_updates": Schema(
+        NestedField(field_id=1,name="id", field_type=LongType()),
+        NestedField(field_id=2,name="a1", field_type=LongType()),
+        NestedField(field_id=3,name="a2", field_type=StringType()),
     ),
-    "test_object_schema_with_properties": pa.schema(
-        [
-            (
-                "object_store",
-                pa.struct([("id", pa.int64()), ("metric", pa.int64())]),
-            ),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "test_object_schema_with_properties": Schema(
+        NestedField(field_id=1, name="object_store", field_type=StructType(
+            NestedField(field_id=2, name="id", field_type=LongType()),
+            NestedField(field_id=3, name="metric", field_type=LongType())
+        ))
     ),
-    "test_object_schema_no_properties": pa.schema(
-        [
-            (
-                "object_store",
-                pa.struct([("id", pa.int64()), ("metric", pa.int64())]),
-            ),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "test_object_schema_no_properties": Schema(
+        NestedField(field_id=1, name="object_store", field_type=StructType(
+            NestedField(field_id=2, name="id", field_type=LongType()),
+            NestedField(field_id=3, name="metric", field_type=LongType())
+        ))
     ),
-    "TestCamelcase": pa.schema(
-        [
-            ("Id", pa.string()),
-            ("clientName", pa.string()),
-            ("_sdc_started_at", pa.timestamp("us", tz="UTC")),
-        ]
+    "TestCamelcase": Schema(
+        NestedField(field_id=1, name="Id", field_type=StringType()),
+        NestedField(field_id=2, name="clientName", field_type=StringType())
+    ),
+    "data_partitioning": Schema(
+        NestedField(field_id=1, name="id", field_type=StringType()),
+        NestedField(field_id=2, name="created_at", field_type=TimestampType())
     ),
 }
+
+class TargetPartitioningTest(TargetFileTestTemplate):
+    """Test Target handles data partitioning correctly."""
+
+    name = "data_partitioning"
+
+    @property
+    def singer_filepath(self) -> Path:
+        return files(data_files) / "data_partitioning.singer"
+
+    def test(self) -> None:
+        """Run partitioning test."""
+        self.runner.sync_all()
+
+        partitions = self.get_partitions()
+
+        expected_len_partitions = 3
+        assert partitions == expected_len_partitions, f"Expected partitions {expected_len_partitions}, but got {partitions}"
+
+
+    def get_partitions(self):
+
+        table = catalog.load_table(f"{SAMPLE_CONFIG['database']}.data_partitioning")
+        number_of_partitions = len(table.inspect.partitions())
+
+        return number_of_partitions
 
 
 # Run standard built-in target tests from the SDK:
 StandardTargetTests = get_target_test_class(
     target_class=TargetIceberg,
     config=SAMPLE_CONFIG,
+    custom_suites=[
+        TestSuite(
+            kind="target",
+            tests=[TargetPartitioningTest]
+        )
+    ]
 )
 
 
@@ -138,16 +165,26 @@ class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
     """Standard Target Tests."""
 
     def _create_required_tables(self) -> None:
-        catalog = load_catalog(
+        catalog =load_catalog(
             "demo",
             **get_catalog_config(SAMPLE_CONFIG),
         )
 
         for table, schema in REQUIRED_TABLES.items():
-            catalog.create_table(
+            if table == "data_partitioning":
+                partition_spec = PartitionSpec(
+                    PartitionField(source_id=2, field_id=6, transform=DayTransform(), name="created_at_day")
+                )
+                catalog.create_table(
                 f"{SAMPLE_CONFIG['database']}.{table}",
                 schema=schema,
+                partition_spec=partition_spec
             )
+            else:
+                catalog.create_table(
+                    f"{SAMPLE_CONFIG['database']}.{table}",
+                    schema=schema,
+                )
 
     @pytest.fixture(scope="class")
     def resource(self):  # noqa: ANN201
