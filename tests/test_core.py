@@ -134,13 +134,13 @@ class TargetPartitioningTest(TargetFileTestTemplate):
         """Run partitioning test."""
         self.runner.sync_all()
 
-        partitions = self.get_partitions()
+        partitions = self._get_partitions()
 
-        expected_len_partitions = 3
-        assert partitions == expected_len_partitions, f"Expected partitions {expected_len_partitions}, but got {partitions}"
+        """In data_partitioning.singer, we currently have only three distinct fields available for partitioning"""
+        assert partitions == 3, f"Expected partitions 3, but got {partitions}"
 
 
-    def get_partitions(self):
+    def _get_partitions(self):
 
         table = catalog.load_table(f"{SAMPLE_CONFIG['database']}.data_partitioning")
         number_of_partitions = len(table.inspect.partitions())
@@ -171,20 +171,19 @@ class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
         )
 
         for table, schema in REQUIRED_TABLES.items():
+
+            table_creation_config = {
+                "identifier": f"{SAMPLE_CONFIG['database']}.{table}",
+                "schema": schema,
+            }
+
             if table == "data_partitioning":
                 partition_spec = PartitionSpec(
                     PartitionField(source_id=2, field_id=6, transform=DayTransform(), name="created_at_day")
                 )
-                catalog.create_table(
-                f"{SAMPLE_CONFIG['database']}.{table}",
-                schema=schema,
-                partition_spec=partition_spec
-            )
-            else:
-                catalog.create_table(
-                    f"{SAMPLE_CONFIG['database']}.{table}",
-                    schema=schema,
-                )
+                table_creation_config["partition_spec"] = partition_spec
+
+            catalog.create_table(**table_creation_config)
 
     @pytest.fixture(scope="class")
     def resource(self):  # noqa: ANN201
