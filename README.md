@@ -27,8 +27,6 @@ pipx install git+https://github.com/ORG_NAME/target-iceberg.git@main
 | catalog_type | True     | None    | rest or jdbc |
 | database | True     | None    | The name of the database where data will be written |
 | add_record_metadata | False    | None    | Add metadata to records. |
-| load_method | False    | append-only | The method to use when loading data into the destination. `append-only` will always write all input records whether that records already exists or not. `upsert` will update existing records and insert new records. `overwrite` will delete all existing records and insert all input records. |
-| batch_size_rows | False    | None    | Maximum number of rows in each batch. |
 | validate_records | False    |       1 | Whether to validate the schema of the incoming streams. |
 | stream_maps | False    | None    | Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html). |
 | stream_map_config | False    | None    | User-defined config values to be used within map expressions. |
