@@ -28,18 +28,17 @@ jobs:
         poetry env use ${{ matrix.python-version }}
         poetry install
 
-    - name: Set up Docker Compose
-      run: |
-        sudo apt-get update
-        sudo apt-get install docker-compose -y
-
-    - name: Start Data Catalog with Docker Compose
-      run: |
-        docker-compose up -d
+    - uses: hoverkraft-tech/compose-action@v2.0.1
+      with:
+        compose-file: "./docker-compose.yml"
+        down-flags: "--remove-orphans"
+        up-flags: "--no-start"
 
     - name: Wait for services to be ready
       run: |
         sleep 30  # Adjust the sleep duration as needed
     - name: Test with pytest
       run: |
-        poetry run pytest
+        docker-compose up -d
+        poetry run  pytest
+        docker-compose down
