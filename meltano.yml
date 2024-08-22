@@ -25,7 +25,7 @@ plugins:
 
     settings:
     - name: catalog_type
-    - name: catalog_name
+    - name: warehouse
     - name: catalog_uri
     - name: credential
     - name: database
@@ -34,4 +34,4 @@ plugins:
     - name: s3_endpoint
 
     settings_group_validation:
-    - [catalog_type,catalog_name,database]
+    - [catalog_type,warehouse,database]

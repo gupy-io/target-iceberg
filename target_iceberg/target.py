@@ -46,7 +46,7 @@ class TargetIceberg(Target):
             required=True,
         ),
         th.Property(
-            "catalog_name",
+            "warehouse",
             th.StringType,
             description="The name of the catalog where data will be written",
             required=True,

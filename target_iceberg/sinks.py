@@ -42,7 +42,7 @@ class IcebergSink(BatchSink):
             context: Stream partition or context dictionary.
         """
         catalog = load_catalog(
-            self.config.get("catalog_name"), **get_catalog_config(self.config)
+            self.config.get("warehouse"), **get_catalog_config(self.config)
         )
 
         if context.get("records"):

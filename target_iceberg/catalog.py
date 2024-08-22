@@ -4,7 +4,7 @@ def get_catalog_config(
     config = {
         "type": conf.get("catalog_type"),
         "uri": conf.get("catalog_uri"),
-        "warehouse": conf.get("catalog_name"),
+        "warehouse": conf.get("warehouse"),
         "py-io-impl": "pyiceberg.io.pyarrow.PyArrowFileIO",
         "s3.endpoint": conf.get("s3_endpoint"),
     }
