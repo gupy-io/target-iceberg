@@ -47,7 +47,7 @@ class IcebergSink(BatchSink):
 
         if context.get("records"):
 
-            if table := catalog.load_table(f"{self.config['database']}.{self.stream_name}"):
+            if table := catalog.load_table(f"{self.config['namespace']}.{self.stream_name}"):
 
                 logger.info(
                     "Appending to table", extra={"table_name": self.stream_name}
@@ -61,5 +61,5 @@ class IcebergSink(BatchSink):
                 table.append(records)
 
             else:
-                msg = f"Table {self.stream_name} should exist in database"
+                msg = f"Table {self.stream_name} should exist in namespace"
                 raise ValueError(msg)

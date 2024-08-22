@@ -25,7 +25,7 @@ pipx install git+https://github.com/ORG_NAME/target-iceberg.git@main
 | catalog_uri | True     | None    | Catalog URI, e.g. https://api.catalog.io/ws/ |
 | warehouse | True     | None    | The name of the catalog where data will be written |
 | catalog_type | True     | None    | rest or jdbc |
-| database | True     | None    | The name of the database where data will be written |
+| namespace | True     | None    | The namespace where data will be written|
 | add_record_metadata | False    | None    | Add metadata to records. |
 | validate_records | False    |       1 | Whether to validate the schema of the incoming streams. |
 | stream_maps | False    | None    | Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html). |

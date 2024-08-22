@@ -35,7 +35,7 @@ SAMPLE_CONFIG ={
     "catalog_uri": "http://localhost:8181",
     "warehouse": "demo",
     "catalog_type": "rest",
-    "database": uuid.uuid4().hex,
+    "namespace": uuid.uuid4().hex,
     "s3_endpoint": "http://localhost:9000",
     "s3_access_key_id": "admin",
     "s3_secret_access_key": "password",
@@ -134,7 +134,7 @@ class TargetPartitioningTest(TargetFileTestTemplate):
         """Run partitioning test."""
         self.runner.sync_all()
 
-        table = catalog.load_table(f"{SAMPLE_CONFIG['database']}.data_partitioning")
+        table = catalog.load_table(f"{SAMPLE_CONFIG['namespace']}.data_partitioning")
         number_of_partitions = len(table.inspect.partitions())
 
         """In data_partitioning.singer, we currently have only three distinct fields available for partitioning"""
@@ -168,7 +168,7 @@ class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
         for table, schema in REQUIRED_TABLES.items():
 
             table_creation_config = {
-                "identifier": f"{SAMPLE_CONFIG['database']}.{table}",
+                "identifier": f"{SAMPLE_CONFIG['namespace']}.{table}",
                 "schema": schema,
             }
 

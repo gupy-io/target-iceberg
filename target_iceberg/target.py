@@ -58,9 +58,9 @@ class TargetIceberg(Target):
             required=True,
         ),
         th.Property(
-            "database",
+            "namespace",
             th.StringType,
-            description="The name of the database where data will be written",
+            description="The namespace where data will be written",
             required=True,
         ),
     ).to_dict()
