@@ -33,7 +33,7 @@ from importlib.resources import files
 
 SAMPLE_CONFIG ={
     "catalog_uri": "http://localhost:8181",
-    "catalog_name": "demo",
+    "warehouse": "demo",
     "catalog_type": "rest",
     "database": uuid.uuid4().hex,
     "s3_endpoint": "http://localhost:9000",
@@ -134,18 +134,11 @@ class TargetPartitioningTest(TargetFileTestTemplate):
         """Run partitioning test."""
         self.runner.sync_all()
 
-        partitions = self._get_partitions()
-
-        """In data_partitioning.singer, we currently have only three distinct fields available for partitioning"""
-        assert partitions == 3, f"Expected partitions 3, but got {partitions}"
-
-
-    def _get_partitions(self):
-
         table = catalog.load_table(f"{SAMPLE_CONFIG['database']}.data_partitioning")
         number_of_partitions = len(table.inspect.partitions())
 
-        return number_of_partitions
+        """In data_partitioning.singer, we currently have only three distinct fields available for partitioning"""
+        assert number_of_partitions == 3, f"Expected partitions 3, but got {number_of_partitions}"
 
 
 # Run standard built-in target tests from the SDK:
@@ -164,7 +157,9 @@ StandardTargetTests = get_target_test_class(
 class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
     """Standard Target Tests."""
 
-    def _create_required_tables(self) -> None:
+    @pytest.fixture(scope="class")
+    def resource(self):  # noqa: ANN201
+
         catalog =load_catalog(
             "demo",
             **get_catalog_config(SAMPLE_CONFIG),
@@ -184,7 +179,3 @@ class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
                 table_creation_config["partition_spec"] = partition_spec
 
             catalog.create_table(**table_creation_config)
-
-    @pytest.fixture(scope="class")
-    def resource(self):  # noqa: ANN201
-        self._create_required_tables()
