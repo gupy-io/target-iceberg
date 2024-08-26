@@ -1432,107 +1432,6 @@ files = [
 ]
 
 [[package]]
-name = "pendulum"
-version = "3.0.0"
-description = "Python datetimes made easy"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "pendulum-3.0.0-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:2cf9e53ef11668e07f73190c805dbdf07a1939c3298b78d5a9203a86775d1bfd"},
-    {file = "pendulum-3.0.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:fb551b9b5e6059377889d2d878d940fd0bbb80ae4810543db18e6f77b02c5ef6"},
-    {file = "pendulum-3.0.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6c58227ac260d5b01fc1025176d7b31858c9f62595737f350d22124a9a3ad82d"},
-    {file = "pendulum-3.0.0-cp310-cp310-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:60fb6f415fea93a11c52578eaa10594568a6716602be8430b167eb0d730f3332"},
-    {file = "pendulum-3.0.0-cp310-cp310-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:b69f6b4dbcb86f2c2fe696ba991e67347bcf87fe601362a1aba6431454b46bde"},
-    {file = "pendulum-3.0.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:138afa9c373ee450ede206db5a5e9004fd3011b3c6bbe1e57015395cd076a09f"},
-    {file = "pendulum-3.0.0-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:83d9031f39c6da9677164241fd0d37fbfc9dc8ade7043b5d6d62f56e81af8ad2"},
-    {file = "pendulum-3.0.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:0c2308af4033fa534f089595bcd40a95a39988ce4059ccd3dc6acb9ef14ca44a"},
-    {file = "pendulum-3.0.0-cp310-none-win_amd64.whl", hash = "sha256:9a59637cdb8462bdf2dbcb9d389518c0263799189d773ad5c11db6b13064fa79"},
-    {file = "pendulum-3.0.0-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:3725245c0352c95d6ca297193192020d1b0c0f83d5ee6bb09964edc2b5a2d508"},
-    {file = "pendulum-3.0.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:6c035f03a3e565ed132927e2c1b691de0dbf4eb53b02a5a3c5a97e1a64e17bec"},
-    {file = "pendulum-3.0.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:597e66e63cbd68dd6d58ac46cb7a92363d2088d37ccde2dae4332ef23e95cd00"},
-    {file = "pendulum-3.0.0-cp311-cp311-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:99a0f8172e19f3f0c0e4ace0ad1595134d5243cf75985dc2233e8f9e8de263ca"},
-    {file = "pendulum-3.0.0-cp311-cp311-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:77d8839e20f54706aed425bec82a83b4aec74db07f26acd039905d1237a5e1d4"},
-    {file = "pendulum-3.0.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:afde30e8146292b059020fbc8b6f8fd4a60ae7c5e6f0afef937bbb24880bdf01"},
-    {file = "pendulum-3.0.0-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:660434a6fcf6303c4efd36713ca9212c753140107ee169a3fc6c49c4711c2a05"},
-    {file = "pendulum-3.0.0-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:dee9e5a48c6999dc1106eb7eea3e3a50e98a50651b72c08a87ee2154e544b33e"},
-    {file = "pendulum-3.0.0-cp311-none-win_amd64.whl", hash = "sha256:d4cdecde90aec2d67cebe4042fd2a87a4441cc02152ed7ed8fb3ebb110b94ec4"},
-    {file = "pendulum-3.0.0-cp311-none-win_arm64.whl", hash = "sha256:773c3bc4ddda2dda9f1b9d51fe06762f9200f3293d75c4660c19b2614b991d83"},
-    {file = "pendulum-3.0.0-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:409e64e41418c49f973d43a28afe5df1df4f1dd87c41c7c90f1a63f61ae0f1f7"},
-    {file = "pendulum-3.0.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:a38ad2121c5ec7c4c190c7334e789c3b4624798859156b138fcc4d92295835dc"},
-    {file = "pendulum-3.0.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:fde4d0b2024b9785f66b7f30ed59281bd60d63d9213cda0eb0910ead777f6d37"},
-    {file = "pendulum-3.0.0-cp312-cp312-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:4b2c5675769fb6d4c11238132962939b960fcb365436b6d623c5864287faa319"},
-    {file = "pendulum-3.0.0-cp312-cp312-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:8af95e03e066826f0f4c65811cbee1b3123d4a45a1c3a2b4fc23c4b0dff893b5"},
-    {file = "pendulum-3.0.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2165a8f33cb15e06c67070b8afc87a62b85c5a273e3aaa6bc9d15c93a4920d6f"},
-    {file = "pendulum-3.0.0-cp312-cp312-musllinux_1_1_aarch64.whl", hash = "sha256:ad5e65b874b5e56bd942546ea7ba9dd1d6a25121db1c517700f1c9de91b28518"},
-    {file = "pendulum-3.0.0-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:17fe4b2c844bbf5f0ece69cfd959fa02957c61317b2161763950d88fed8e13b9"},
-    {file = "pendulum-3.0.0-cp312-none-win_amd64.whl", hash = "sha256:78f8f4e7efe5066aca24a7a57511b9c2119f5c2b5eb81c46ff9222ce11e0a7a5"},
-    {file = "pendulum-3.0.0-cp312-none-win_arm64.whl", hash = "sha256:28f49d8d1e32aae9c284a90b6bb3873eee15ec6e1d9042edd611b22a94ac462f"},
-    {file = "pendulum-3.0.0-cp37-cp37m-macosx_10_12_x86_64.whl", hash = "sha256:d4e2512f4e1a4670284a153b214db9719eb5d14ac55ada5b76cbdb8c5c00399d"},
-    {file = "pendulum-3.0.0-cp37-cp37m-macosx_11_0_arm64.whl", hash = "sha256:3d897eb50883cc58d9b92f6405245f84b9286cd2de6e8694cb9ea5cb15195a32"},
-    {file = "pendulum-3.0.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2e169cc2ca419517f397811bbe4589cf3cd13fca6dc38bb352ba15ea90739ebb"},
-    {file = "pendulum-3.0.0-cp37-cp37m-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:f17c3084a4524ebefd9255513692f7e7360e23c8853dc6f10c64cc184e1217ab"},
-    {file = "pendulum-3.0.0-cp37-cp37m-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:826d6e258052715f64d05ae0fc9040c0151e6a87aae7c109ba9a0ed930ce4000"},
-    {file = "pendulum-3.0.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d2aae97087872ef152a0c40e06100b3665d8cb86b59bc8471ca7c26132fccd0f"},
-    {file = "pendulum-3.0.0-cp37-cp37m-musllinux_1_1_aarch64.whl", hash = "sha256:ac65eeec2250d03106b5e81284ad47f0d417ca299a45e89ccc69e36130ca8bc7"},
-    {file = "pendulum-3.0.0-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:a5346d08f3f4a6e9e672187faa179c7bf9227897081d7121866358af369f44f9"},
-    {file = "pendulum-3.0.0-cp37-none-win_amd64.whl", hash = "sha256:235d64e87946d8f95c796af34818c76e0f88c94d624c268693c85b723b698aa9"},
-    {file = "pendulum-3.0.0-cp38-cp38-macosx_10_12_x86_64.whl", hash = "sha256:6a881d9c2a7f85bc9adafcfe671df5207f51f5715ae61f5d838b77a1356e8b7b"},
-    {file = "pendulum-3.0.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:d7762d2076b9b1cb718a6631ad6c16c23fc3fac76cbb8c454e81e80be98daa34"},
-    {file = "pendulum-3.0.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4e8e36a8130819d97a479a0e7bf379b66b3b1b520e5dc46bd7eb14634338df8c"},
-    {file = "pendulum-3.0.0-cp38-cp38-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:7dc843253ac373358ffc0711960e2dd5b94ab67530a3e204d85c6e8cb2c5fa10"},
-    {file = "pendulum-3.0.0-cp38-cp38-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:0a78ad3635d609ceb1e97d6aedef6a6a6f93433ddb2312888e668365908c7120"},
-    {file = "pendulum-3.0.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b30a137e9e0d1f751e60e67d11fc67781a572db76b2296f7b4d44554761049d6"},
-    {file = "pendulum-3.0.0-cp38-cp38-musllinux_1_1_aarch64.whl", hash = "sha256:c95984037987f4a457bb760455d9ca80467be792236b69d0084f228a8ada0162"},
-    {file = "pendulum-3.0.0-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:d29c6e578fe0f893766c0d286adbf0b3c726a4e2341eba0917ec79c50274ec16"},
-    {file = "pendulum-3.0.0-cp38-none-win_amd64.whl", hash = "sha256:deaba8e16dbfcb3d7a6b5fabdd5a38b7c982809567479987b9c89572df62e027"},
-    {file = "pendulum-3.0.0-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:b11aceea5b20b4b5382962b321dbc354af0defe35daa84e9ff3aae3c230df694"},
-    {file = "pendulum-3.0.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:a90d4d504e82ad236afac9adca4d6a19e4865f717034fc69bafb112c320dcc8f"},
-    {file = "pendulum-3.0.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:825799c6b66e3734227756fa746cc34b3549c48693325b8b9f823cb7d21b19ac"},
-    {file = "pendulum-3.0.0-cp39-cp39-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:ad769e98dc07972e24afe0cff8d365cb6f0ebc7e65620aa1976fcfbcadc4c6f3"},
-    {file = "pendulum-3.0.0-cp39-cp39-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:a6fc26907eb5fb8cc6188cc620bc2075a6c534d981a2f045daa5f79dfe50d512"},
-    {file = "pendulum-3.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0c717eab1b6d898c00a3e0fa7781d615b5c5136bbd40abe82be100bb06df7a56"},
-    {file = "pendulum-3.0.0-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:3ddd1d66d1a714ce43acfe337190be055cdc221d911fc886d5a3aae28e14b76d"},
-    {file = "pendulum-3.0.0-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:822172853d7a9cf6da95d7b66a16c7160cb99ae6df55d44373888181d7a06edc"},
-    {file = "pendulum-3.0.0-cp39-none-win_amd64.whl", hash = "sha256:840de1b49cf1ec54c225a2a6f4f0784d50bd47f68e41dc005b7f67c7d5b5f3ae"},
-    {file = "pendulum-3.0.0-pp310-pypy310_pp73-macosx_10_12_x86_64.whl", hash = "sha256:3b1f74d1e6ffe5d01d6023870e2ce5c2191486928823196f8575dcc786e107b1"},
-    {file = "pendulum-3.0.0-pp310-pypy310_pp73-macosx_11_0_arm64.whl", hash = "sha256:729e9f93756a2cdfa77d0fc82068346e9731c7e884097160603872686e570f07"},
-    {file = "pendulum-3.0.0-pp310-pypy310_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e586acc0b450cd21cbf0db6bae386237011b75260a3adceddc4be15334689a9a"},
-    {file = "pendulum-3.0.0-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:22e7944ffc1f0099a79ff468ee9630c73f8c7835cd76fdb57ef7320e6a409df4"},
-    {file = "pendulum-3.0.0-pp310-pypy310_pp73-musllinux_1_1_aarch64.whl", hash = "sha256:fa30af36bd8e50686846bdace37cf6707bdd044e5cb6e1109acbad3277232e04"},
-    {file = "pendulum-3.0.0-pp310-pypy310_pp73-musllinux_1_1_x86_64.whl", hash = "sha256:440215347b11914ae707981b9a57ab9c7b6983ab0babde07063c6ee75c0dc6e7"},
-    {file = "pendulum-3.0.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:314c4038dc5e6a52991570f50edb2f08c339debdf8cea68ac355b32c4174e820"},
-    {file = "pendulum-3.0.0-pp37-pypy37_pp73-macosx_10_12_x86_64.whl", hash = "sha256:5acb1d386337415f74f4d1955c4ce8d0201978c162927d07df8eb0692b2d8533"},
-    {file = "pendulum-3.0.0-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a789e12fbdefaffb7b8ac67f9d8f22ba17a3050ceaaa635cd1cc4645773a4b1e"},
-    {file = "pendulum-3.0.0-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:860aa9b8a888e5913bd70d819306749e5eb488e6b99cd6c47beb701b22bdecf5"},
-    {file = "pendulum-3.0.0-pp37-pypy37_pp73-musllinux_1_1_aarch64.whl", hash = "sha256:5ebc65ea033ef0281368217fbf59f5cb05b338ac4dd23d60959c7afcd79a60a0"},
-    {file = "pendulum-3.0.0-pp37-pypy37_pp73-musllinux_1_1_x86_64.whl", hash = "sha256:d9fef18ab0386ef6a9ac7bad7e43ded42c83ff7ad412f950633854f90d59afa8"},
-    {file = "pendulum-3.0.0-pp38-pypy38_pp73-macosx_10_12_x86_64.whl", hash = "sha256:1c134ba2f0571d0b68b83f6972e2307a55a5a849e7dac8505c715c531d2a8795"},
-    {file = "pendulum-3.0.0-pp38-pypy38_pp73-macosx_11_0_arm64.whl", hash = "sha256:385680812e7e18af200bb9b4a49777418c32422d05ad5a8eb85144c4a285907b"},
-    {file = "pendulum-3.0.0-pp38-pypy38_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:9eec91cd87c59fb32ec49eb722f375bd58f4be790cae11c1b70fac3ee4f00da0"},
-    {file = "pendulum-3.0.0-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4386bffeca23c4b69ad50a36211f75b35a4deb6210bdca112ac3043deb7e494a"},
-    {file = "pendulum-3.0.0-pp38-pypy38_pp73-musllinux_1_1_aarch64.whl", hash = "sha256:dfbcf1661d7146d7698da4b86e7f04814221081e9fe154183e34f4c5f5fa3bf8"},
-    {file = "pendulum-3.0.0-pp38-pypy38_pp73-musllinux_1_1_x86_64.whl", hash = "sha256:04a1094a5aa1daa34a6b57c865b25f691848c61583fb22722a4df5699f6bf74c"},
-    {file = "pendulum-3.0.0-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:5b0ec85b9045bd49dd3a3493a5e7ddfd31c36a2a60da387c419fa04abcaecb23"},
-    {file = "pendulum-3.0.0-pp39-pypy39_pp73-macosx_10_12_x86_64.whl", hash = "sha256:0a15b90129765b705eb2039062a6daf4d22c4e28d1a54fa260892e8c3ae6e157"},
-    {file = "pendulum-3.0.0-pp39-pypy39_pp73-macosx_11_0_arm64.whl", hash = "sha256:bb8f6d7acd67a67d6fedd361ad2958ff0539445ef51cbe8cd288db4306503cd0"},
-    {file = "pendulum-3.0.0-pp39-pypy39_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:fd69b15374bef7e4b4440612915315cc42e8575fcda2a3d7586a0d88192d0c88"},
-    {file = "pendulum-3.0.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:dc00f8110db6898360c53c812872662e077eaf9c75515d53ecc65d886eec209a"},
-    {file = "pendulum-3.0.0-pp39-pypy39_pp73-musllinux_1_1_aarch64.whl", hash = "sha256:83a44e8b40655d0ba565a5c3d1365d27e3e6778ae2a05b69124db9e471255c4a"},
-    {file = "pendulum-3.0.0-pp39-pypy39_pp73-musllinux_1_1_x86_64.whl", hash = "sha256:1a3604e9fbc06b788041b2a8b78f75c243021e0f512447806a6d37ee5214905d"},
-    {file = "pendulum-3.0.0-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:92c307ae7accebd06cbae4729f0ba9fa724df5f7d91a0964b1b972a22baa482b"},
-    {file = "pendulum-3.0.0.tar.gz", hash = "sha256:5d034998dea404ec31fae27af6b22cff1708f830a1ed7353be4d1019bb9f584e"},
-]
-
-[package.dependencies]
-"backports.zoneinfo" = {version = ">=0.2.1", markers = "python_version < \"3.9\""}
-importlib-resources = {version = ">=5.9.0", markers = "python_version < \"3.9\""}
-python-dateutil = ">=2.6"
-tzdata = ">=2020.1"
-
-[package.extras]
-test = ["time-machine (>=2.6.0)"]
-
-[[package]]
 name = "pkgutil-resolve-name"
 version = "1.3.10"
 description = "Resolve a name to an object."
@@ -1815,51 +1714,51 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pyiceberg"
-version = "0.7.0"
+version = "0.7.1"
 description = "Apache Iceberg is an open table format for huge analytic datasets"
 optional = false
-python-versions = "<4.0,>=3.8"
+python-versions = "!=2.7.*,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,!=3.7.*,>=3.8"
 files = [
-    {file = "pyiceberg-0.7.0-cp310-cp310-macosx_12_0_x86_64.whl", hash = "sha256:900259539312d74135af333b4a8cffddad5bedbc0b9a80541d2935603c6c3461"},
-    {file = "pyiceberg-0.7.0-cp310-cp310-macosx_13_0_x86_64.whl", hash = "sha256:db8cb881e3f3b629783b842c4e720b160be655971fe1f37a5feaa8b9b602410b"},
-    {file = "pyiceberg-0.7.0-cp310-cp310-macosx_14_0_arm64.whl", hash = "sha256:6c4be8002c1c18c756e8038fc2d700ff9713f23aa9947d14bcc4b1d31dc44dc5"},
-    {file = "pyiceberg-0.7.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:da4960a7224354393162a68fb3fe034f8e05237f4df2e8fb3c29d2794770d182"},
-    {file = "pyiceberg-0.7.0-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:4a49e4a57f0b58c9fe21ce8f95f8b8ba57d4cd3aba2e48bc7eb383e7869df2db"},
-    {file = "pyiceberg-0.7.0-cp310-cp310-win_amd64.whl", hash = "sha256:c56a01d4fbadd0987ae544a9882e27688768d2e83a7fc9f3c556ca6508afe809"},
-    {file = "pyiceberg-0.7.0-cp311-cp311-macosx_12_0_x86_64.whl", hash = "sha256:b75665498398667f91765b5b5fd8a22d2b415c748b78d7424af75379a05bee67"},
-    {file = "pyiceberg-0.7.0-cp311-cp311-macosx_13_0_x86_64.whl", hash = "sha256:13d8dbd8a0b16ee710a242651fb0d4bed84295425deec8ba32110df638dcbe83"},
-    {file = "pyiceberg-0.7.0-cp311-cp311-macosx_14_0_arm64.whl", hash = "sha256:00a9f49fe6ff5925141065eba75dd2d5594e615bbca4a4d92bdf86f5e053c682"},
-    {file = "pyiceberg-0.7.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ccf20eeacff53c0152f1ee4c42bbc55b138979d09e75ec1288683eeaea00f288"},
-    {file = "pyiceberg-0.7.0-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:219d26c5eabb180b8173a2bcf4d60e61a27e08781340ce4c7a3a9a234bf874f5"},
-    {file = "pyiceberg-0.7.0-cp311-cp311-win_amd64.whl", hash = "sha256:9f409b8add482664d3419226e4c4d40eddb9124bcdf62ac62b0a854824ca7707"},
-    {file = "pyiceberg-0.7.0-cp38-cp38-macosx_12_0_x86_64.whl", hash = "sha256:9e6529f2753cabc658565aac7e67f7293f3c73469244288c177de485d5df54ab"},
-    {file = "pyiceberg-0.7.0-cp38-cp38-macosx_13_0_x86_64.whl", hash = "sha256:94f424aa3b034bb2cf5259d154044c2c25ca435a5326d8f774542578e6f7e5b8"},
-    {file = "pyiceberg-0.7.0-cp38-cp38-macosx_14_0_arm64.whl", hash = "sha256:05dafe9dea52e50ee112202b6952478bf13289f3a2baf9e35e60f696c53729a0"},
-    {file = "pyiceberg-0.7.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:41930a157196dca8221f70fe6926216f7778664fcabb81a27b8a15eb918862f4"},
-    {file = "pyiceberg-0.7.0-cp38-cp38-musllinux_1_2_x86_64.whl", hash = "sha256:ea89a3517fb96d6dd4592ce75396201c7d85287983cb49b33afd79bb01426500"},
-    {file = "pyiceberg-0.7.0-cp38-cp38-win_amd64.whl", hash = "sha256:658595e704a9df2b68527380989f78f3e4bb79b67b78f46a7e9556a8ae17c8da"},
-    {file = "pyiceberg-0.7.0-cp39-cp39-macosx_12_0_x86_64.whl", hash = "sha256:8439622bfcf4e44413775b2a68dc8e8fffbe514214d22059cccf0e6ccd07995f"},
-    {file = "pyiceberg-0.7.0-cp39-cp39-macosx_13_0_x86_64.whl", hash = "sha256:6db27f6b99343559c1b5d14f3c55a94f26d62249e5e375af4c2cc6295a0a53bb"},
-    {file = "pyiceberg-0.7.0-cp39-cp39-macosx_14_0_arm64.whl", hash = "sha256:96dc5ee66e47c9f4879979367e0f7de438e7e2e38efd532a4947cdf10e421e97"},
-    {file = "pyiceberg-0.7.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:63e87dd556f4706df98e1ed0417d7e10c30a7cd81b6ced8de6afa170bf2bc3f7"},
-    {file = "pyiceberg-0.7.0-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:73e418df4725a2c792b2b10d292ea3b86ab4fcb4cadc79cb0737c5851387a12e"},
-    {file = "pyiceberg-0.7.0-cp39-cp39-win_amd64.whl", hash = "sha256:d65aa217dc802e96b979ca482d678d7cacad1a255806635892d4ca01460d290d"},
-    {file = "pyiceberg-0.7.0-pp310-pypy310_pp73-macosx_12_0_x86_64.whl", hash = "sha256:945dbe6069480fa2fd68080236ad5106721944a2e14a63f7af9a35cef287ed41"},
-    {file = "pyiceberg-0.7.0-pp310-pypy310_pp73-macosx_13_0_x86_64.whl", hash = "sha256:ef6bbc96b1bbae3d5442cb5ebcbcbe56818c5e872f1dd80faf92dbef01449bc0"},
-    {file = "pyiceberg-0.7.0-pp310-pypy310_pp73-macosx_14_0_arm64.whl", hash = "sha256:882cfdbee3aa54fa542dacfde9db70cdd50ade08d3fbbdc9cec788344bdac3bf"},
-    {file = "pyiceberg-0.7.0-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ab43698d0925cdc2f79d575cae7b438d6cb7386ac76c98bd2eaca700f331cb45"},
-    {file = "pyiceberg-0.7.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:69a32a4d6dc8835d49f91cb1d237972f2f0dece7c9164dd43015ddbf693d5058"},
-    {file = "pyiceberg-0.7.0-pp38-pypy38_pp73-macosx_12_0_x86_64.whl", hash = "sha256:e748a99d03e04afce4cff9be7ec436c6effb2e38689359a04491a466c40708e7"},
-    {file = "pyiceberg-0.7.0-pp38-pypy38_pp73-macosx_13_0_x86_64.whl", hash = "sha256:73e1da90e8b830f2048626beac915b8381f86c33ca96566adf92873dc8533f8d"},
-    {file = "pyiceberg-0.7.0-pp38-pypy38_pp73-macosx_14_0_arm64.whl", hash = "sha256:401359d98ff0bcbe7a4dec5074b94ff62a9c1cecb3ce67fbc876d1b5a8388716"},
-    {file = "pyiceberg-0.7.0-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:52a00d50191cc7c90b5214f5d33c628cc3317b24d4ff2cd62bb91cd8db613967"},
-    {file = "pyiceberg-0.7.0-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:839abdf3df53a2896156a02bc71202aa7496e94aba5da6c413f929d7b9890b32"},
-    {file = "pyiceberg-0.7.0-pp39-pypy39_pp73-macosx_12_0_x86_64.whl", hash = "sha256:00c58d41130adbe658640ae50f29bb2e44f3ba3ea53b5c21d25342585184b6f3"},
-    {file = "pyiceberg-0.7.0-pp39-pypy39_pp73-macosx_13_0_x86_64.whl", hash = "sha256:31e79ba8786524d86386e3bd7565f189d935088e19165cfbf2d179d8461cb570"},
-    {file = "pyiceberg-0.7.0-pp39-pypy39_pp73-macosx_14_0_arm64.whl", hash = "sha256:e991e9d83325ab03b892b1b2d5582cb50c553b3c2289f652911a1bad1c9e2212"},
-    {file = "pyiceberg-0.7.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cff88aaeb09a4062eca309214fc34bd3f1440792e2a8372026b37c5427add328"},
-    {file = "pyiceberg-0.7.0-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:1f571b193f0acf075aca424a068765403f8446a93c244699909cd75e2d471161"},
-    {file = "pyiceberg-0.7.0.tar.gz", hash = "sha256:1ccafcf173d093fe90de1259fdf8c116185e0fb762d7451964ba4fccf056a034"},
+    {file = "pyiceberg-0.7.1-cp310-cp310-macosx_12_0_x86_64.whl", hash = "sha256:9e0cc837d41e100df81f1f5e580a89668aade694d8c616941d6e11c3a27e49cb"},
+    {file = "pyiceberg-0.7.1-cp310-cp310-macosx_13_0_x86_64.whl", hash = "sha256:71c053c2d484505d1beabd7d5167fe2e835ca865f52ad91ef4852f0d91fa4a25"},
+    {file = "pyiceberg-0.7.1-cp310-cp310-macosx_14_0_arm64.whl", hash = "sha256:0549ab1843bc07037a7d212c2db527ff1755f5d8f80420907952b5b080eb3663"},
+    {file = "pyiceberg-0.7.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ec4a8000f0bb6ce6ec47f3368ca99f3191e9105662eeef7be2fbb493363cba96"},
+    {file = "pyiceberg-0.7.1-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:0ef6636d3cf370b796529f9a8dbd84e892a2151f0310a8015b9a1e702647ad90"},
+    {file = "pyiceberg-0.7.1-cp310-cp310-win_amd64.whl", hash = "sha256:9b49320f3e9624075879a4ddb4fa5ddff7d4a03f6561ad6fd73d514c63095367"},
+    {file = "pyiceberg-0.7.1-cp311-cp311-macosx_12_0_x86_64.whl", hash = "sha256:27e9b4033691411ef7c49d93df7b3b7f3ed85fe8019cbf0dab5a5ba888b27f34"},
+    {file = "pyiceberg-0.7.1-cp311-cp311-macosx_13_0_x86_64.whl", hash = "sha256:7262ba4f95e05a1421567e24c0db57288dc59974c94676aba34afef121544694"},
+    {file = "pyiceberg-0.7.1-cp311-cp311-macosx_14_0_arm64.whl", hash = "sha256:3eb1fc1d47085b16973999c2111d252fab2a394625c0f25da6515b8c3233c853"},
+    {file = "pyiceberg-0.7.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1856c5d64197c9335817b8cf7081e490b601385623e5178cb094ee645d4fb24c"},
+    {file = "pyiceberg-0.7.1-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:b6b64006c361220ce103b5bb2f50381a3f851452668adf5a6c61d39f5611e832"},
+    {file = "pyiceberg-0.7.1-cp311-cp311-win_amd64.whl", hash = "sha256:57a0b1fb390d26a5b7155de011300300058343e5c2561f4839d69c1775df1d7e"},
+    {file = "pyiceberg-0.7.1-cp38-cp38-macosx_12_0_x86_64.whl", hash = "sha256:84f2119705e31929aa75beb9a8ce97210e56f498e863e31dc499a2120c2842bd"},
+    {file = "pyiceberg-0.7.1-cp38-cp38-macosx_13_0_x86_64.whl", hash = "sha256:f99ab8d71a2968af0b512fff1d3dcbd145705a95a26b05121c0df712683c9e0c"},
+    {file = "pyiceberg-0.7.1-cp38-cp38-macosx_14_0_arm64.whl", hash = "sha256:5dc17aa1f53f5b8be12eae35dbcb9885b2534138bdecd31a0088680651fbb98e"},
+    {file = "pyiceberg-0.7.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:917fdfd372922f9534fe9b6652881a79f82f94d7d3645ddb1925688e3d9aaf4d"},
+    {file = "pyiceberg-0.7.1-cp38-cp38-musllinux_1_2_x86_64.whl", hash = "sha256:910fab27c039d62a1fe4a199aaea63d08ada30ead6fd27d56bf038c487837691"},
+    {file = "pyiceberg-0.7.1-cp38-cp38-win_amd64.whl", hash = "sha256:98db6d18dca335682c32b25406d7ab5afad8f1baea4fbdafda166cbc6557409c"},
+    {file = "pyiceberg-0.7.1-cp39-cp39-macosx_12_0_x86_64.whl", hash = "sha256:c76ea44cc1b02c15b65e1b0cc81b5b3f813ba40a4e262416d7a1e84345f44cf1"},
+    {file = "pyiceberg-0.7.1-cp39-cp39-macosx_13_0_x86_64.whl", hash = "sha256:57485e9331c7e8b1771ea1b2ecdc417dc7a13c7a9a538d74f3f00de98676958b"},
+    {file = "pyiceberg-0.7.1-cp39-cp39-macosx_14_0_arm64.whl", hash = "sha256:bbc79698292482360be86f8d728237b78ef8eb416e21aea9d53e4a1b4f429ce7"},
+    {file = "pyiceberg-0.7.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2f84d912fc12866f22882f5de157cbbfab3dcbad8e0a4378557e5b84a0c3f360"},
+    {file = "pyiceberg-0.7.1-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:f86c535735e57f1a0c76fd0f505e0b172cc212c96a3789f3845220695e792157"},
+    {file = "pyiceberg-0.7.1-cp39-cp39-win_amd64.whl", hash = "sha256:d8bee5aa4b34e6028f0465cf405bc4e963e160ac52efbe4bdbc499bb55bc2780"},
+    {file = "pyiceberg-0.7.1-pp310-pypy310_pp73-macosx_12_0_x86_64.whl", hash = "sha256:9ae56197db8570553491173adfd2e01a03ae116a1f9fa78ba5a1a1c4e2ad3dbf"},
+    {file = "pyiceberg-0.7.1-pp310-pypy310_pp73-macosx_13_0_x86_64.whl", hash = "sha256:e28adc58500ca72e45a07ee4dcd90b63699a8875f178001bd12ace37294c5814"},
+    {file = "pyiceberg-0.7.1-pp310-pypy310_pp73-macosx_14_0_arm64.whl", hash = "sha256:1ae47f2d0e87dccd158ae8dafc47125f9739858068fc3add8940f5585ea40ead"},
+    {file = "pyiceberg-0.7.1-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fb94c3e11354f85daafb2b2f3e13a245bcb35848135b5ed4e8c83e61393c36ea"},
+    {file = "pyiceberg-0.7.1-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:4fe212b0594128d183711c6efb1a40ea5f17372e11595a84f4565eb9fe97c703"},
+    {file = "pyiceberg-0.7.1-pp38-pypy38_pp73-macosx_12_0_x86_64.whl", hash = "sha256:35ce27243b86f7057fbd4594dbe5d6b2a1ccd738ba6b65c2a4f3af249f1e8364"},
+    {file = "pyiceberg-0.7.1-pp38-pypy38_pp73-macosx_13_0_x86_64.whl", hash = "sha256:56e254623669ab03e779e4b696b7e36cd1c6973e8523200ccc232695742e269d"},
+    {file = "pyiceberg-0.7.1-pp38-pypy38_pp73-macosx_14_0_arm64.whl", hash = "sha256:e07b59a5998c6d4cac258763c6c160234e1e3362a2097808bd02e05e0c16208a"},
+    {file = "pyiceberg-0.7.1-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cde005aa075fc0e5ed0095438b0a4d39534e3cb84889b93d6aa265dd2e072eff"},
+    {file = "pyiceberg-0.7.1-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:1950f2186f1c99e0d187ffee86e2f8d6bbbad9b0079573a7255b85ffaaa82e79"},
+    {file = "pyiceberg-0.7.1-pp39-pypy39_pp73-macosx_12_0_x86_64.whl", hash = "sha256:273b4b642168a5e64fedc0073e18fd481b11d6891f9e44ceb5ce27126fe418f7"},
+    {file = "pyiceberg-0.7.1-pp39-pypy39_pp73-macosx_13_0_x86_64.whl", hash = "sha256:9a2dbc621cdd4f0c92f5b2520f2b266b976317ff8a984aec2ce9240ee3d80471"},
+    {file = "pyiceberg-0.7.1-pp39-pypy39_pp73-macosx_14_0_arm64.whl", hash = "sha256:34c2d6e9d027b66f8d531fcefeb5cda8b2a37e70170c01f6f1c977954d733c45"},
+    {file = "pyiceberg-0.7.1-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c3e97fb65862db191685355e1eb8d97d41d00679a3df1fbd7a1c2560b9e3e6d8"},
+    {file = "pyiceberg-0.7.1-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:98a0de3c2f194907b07522769facbcacdff0ec9577f9710273ba7e0aa8465652"},
+    {file = "pyiceberg-0.7.1.tar.gz", hash = "sha256:2fd8f9717b02673cb9cabe7aed82fc38933241b2bd15cbdc1ff7371e70317a47"},
 ]
 
 [package.dependencies]
@@ -2604,13 +2503,13 @@ files = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.39.0"
+version = "0.39.1"
 description = "A framework for building Singer taps"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "singer_sdk-0.39.0-py3-none-any.whl", hash = "sha256:5b5aa4b485c360fb70af88c5d003b37b74c21c102adac21ea49fa023de860a23"},
-    {file = "singer_sdk-0.39.0.tar.gz", hash = "sha256:e5ab6975e44324be32d15e75e86cb2d6719fc6f6d4b95ee0670a8a70c70d73bc"},
+    {file = "singer_sdk-0.39.1-py3-none-any.whl", hash = "sha256:0c66709678d36f584db313f19c64c7d3b443c6879e5e476b2934918581fb213e"},
+    {file = "singer_sdk-0.39.1.tar.gz", hash = "sha256:1616ac22c6917ddf2267a53e8802c10247a5e742bfb284e9dc9632ef9dc50ca4"},
 ]
 
 [package.dependencies]
@@ -2625,10 +2524,8 @@ joblib = ">=1.3.0"
 jsonpath-ng = ">=1.5.3"
 jsonschema = ">=4.16.0"
 packaging = ">=23.1"
-pendulum = ">=2.1.0,<4"
 pytest = {version = ">=7.2.1", optional = true, markers = "extra == \"docs\" or extra == \"testing\""}
 pytest-durations = {version = ">=1.2.0", optional = true, markers = "extra == \"testing\""}
-python-dateutil = ">=2.8.2"
 python-dotenv = ">=0.20"
 PyYAML = ">=6.0"
 referencing = ">=0.30.0"
@@ -3196,4 +3093,4 @@ s3 = ["fs-s3fs"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<3.13"
-content-hash = "7e4b45668834a6ac8d0c907994de993e8e976bb53654d503a5e62f4ac36f775a"
+content-hash = "df4056d3bcd3847c57d75c7ce6e447ddc547502c1421d3a889a0688e0594f92c"
