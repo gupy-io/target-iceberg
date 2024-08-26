@@ -19,9 +19,25 @@ class TargetIceberg(Target):
         th.Property(
             "credential",
             th.StringType,
-            secret=True,  # Flag config as protected.
+            secret=True,
             description="Rest catalog user credential",
-            required=True,
+        ),
+        th.Property(
+            "s3_endpoint",
+            th.StringType,
+            description="s3 endpoint",
+        ),
+        th.Property(
+            "s3_access_key_id",
+            th.StringType,
+            secret=True,
+            description="AWS access key id",
+        ),
+        th.Property(
+            "s3_secret_access_key",
+            th.StringType,
+            secret=True,
+            description="AWS secret access key id",
         ),
         th.Property(
             "catalog_uri",
@@ -30,7 +46,7 @@ class TargetIceberg(Target):
             required=True,
         ),
         th.Property(
-            "catalog_name",
+            "warehouse",
             th.StringType,
             description="The name of the catalog where data will be written",
             required=True,
@@ -42,9 +58,9 @@ class TargetIceberg(Target):
             required=True,
         ),
         th.Property(
-            "database",
+            "namespace",
             th.StringType,
-            description="The name of the database where data will be written",
+            description="The namespace where data will be written",
             required=True,
         ),
     ).to_dict()

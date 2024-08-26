@@ -25,11 +25,13 @@ plugins:
 
     settings:
     - name: catalog_type
-    - name: catalog_name
+    - name: warehouse
     - name: catalog_uri
     - name: credential
-    - name: database
+    - name: namespace
+    - name: s3_access_key_id
+    - name: s3_secret_access_key
+    - name: s3_endpoint
 
-    # TODO: Declare required settings here:
     settings_group_validation:
-    - []
+    - [catalog_type,warehouse,namespace]
