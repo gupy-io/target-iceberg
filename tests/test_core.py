@@ -119,7 +119,22 @@ REQUIRED_TABLES ={
         NestedField(field_id=1, name="id", field_type=StringType()),
         NestedField(field_id=2, name="created_at", field_type=TimestampType())
     ),
+    "data_remove_column": Schema(
+        NestedField(field_id=1, name="id", field_type=StringType()),
+        NestedField(field_id=2, name="created_at", field_type=TimestampType())
+    ),
 }
+
+class TargetRemoveColumnsTest(TargetFileTestTemplate):
+    name = "data_remove_column"
+
+    @property
+    def singer_filepath(self) -> Path:
+        return files(data_files) / "data_remove_column.singer"
+
+    def test(self) -> None:
+        self.runner.sync_all()
+
 
 class TargetPartitioningTest(TargetFileTestTemplate):
     """Test Target handles data partitioning correctly."""
@@ -148,7 +163,7 @@ StandardTargetTests = get_target_test_class(
     custom_suites=[
         TestSuite(
             kind="target",
-            tests=[TargetPartitioningTest]
+            tests=[TargetPartitioningTest, TargetRemoveColumnsTest]
         )
     ]
 )

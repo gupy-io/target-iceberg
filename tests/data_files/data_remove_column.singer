@@ -1,0 +1,12 @@
+{"type": "STATE", "value": {}}
+{"type": "SCHEMA", "stream": "data_remove_column", "schema": {"properties": {"id": {"type": ["integer"]}, "created_at": {"type": ["string"]}, "column_to_be_filter": {"type": ["string"]}}, "type": "object", "required": ["id"]}, "key_properties": ["id"]}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 1, "column_to_be_filter": "test", "created_at": "2021-09-22T01:01:05"}}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 6,  "created_at": "2021-05-13T10:03:16"}}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 2, "created_at": "2021-09-22T18:47:52"}}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 3, "column_to_be_filter": "test", "created_at": "2021-09-22T17:41:48"}}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 4, "column_to_be_filter": "test", "created_at": "2021-09-22T16:51:46"}}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 5, "column_to_be_filter": "test", "created_at": "2021-05-13T02:27:58"}}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 7, "column_to_be_filter": "test", "created_at": "2021-05-13T08:45:41"}}
+{"type": "RECORD", "stream": "data_remove_column", "record": {"id": 7, "column_to_be_filter": "test", "created_at": "2021-06-13T08:45:41"}}
+{"type": "STATE", "value": {"bookmarks": {"data_remove_column": {}}}}
+{"type": "STATE", "value": {"bookmarks": {"data_remove_column": {}, "users": {}}}}
