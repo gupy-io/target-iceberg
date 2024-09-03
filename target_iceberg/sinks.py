@@ -57,7 +57,7 @@ class IcebergSink(BatchSink):
 
                 records: pa.Table = pa.Table.from_pylist(context["records"])
 
-                records = _remove_columns(records, schema)
+                records = self._remove_columns(records, schema)
 
                 records = records.cast(schema.as_arrow())
                 table.append(records)
@@ -67,10 +67,10 @@ class IcebergSink(BatchSink):
                 raise ValueError(msg)
 
 
-def _remove_columns(records: pa.Table, destination_schema: pa.Schema) -> pa.Table:
-    """Removes columns from the records table that are not present in the destination schema."""
+    def _remove_columns(self, records: pa.Table, destination_schema: pa.Schema) -> pa.Table:
+        """Removes columns from the records table that are not present in the destination schema."""
+        if self.config.get("filter_columns"):
+            columns_to_remove = set(records.schema.names) - set(destination_schema.as_arrow().names)
+            records = records.drop_columns(columns_to_remove)
 
-    columns_to_remove = set(records.schema.names) - set(destination_schema.as_arrow().names)
-    records = records.drop_columns(columns_to_remove)
-
-    return records
+        return records

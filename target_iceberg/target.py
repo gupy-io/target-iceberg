@@ -63,6 +63,12 @@ class TargetIceberg(Target):
             description="The namespace where data will be written",
             required=True,
         ),
+        th.Property(
+            "filter_columns",
+            th.BooleanType,
+            description="Remove columns that not found in the target schema",
+            required=False,
+        ),
     ).to_dict()
 
     default_sink_class = IcebergSink

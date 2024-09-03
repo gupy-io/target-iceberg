@@ -133,7 +133,11 @@ class TargetRemoveColumnsTest(TargetFileTestTemplate):
         return files(data_files) / "data_remove_column.singer"
 
     def test(self) -> None:
-        self.runner.sync_all()
+
+        SAMPLE_CONFIG["filter_columns"] = False
+
+        with pytest.raises(ValueError, match=r"Target schema's field names are not matching the table's field names: \['id', 'column_to_be_filter', 'created_at'\], \['id', 'created_at'\]"):
+                self.runner.sync_all()
 
 
 class TargetPartitioningTest(TargetFileTestTemplate):
