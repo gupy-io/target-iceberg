@@ -71,6 +71,5 @@ class IcebergSink(BatchSink):
         """Removes columns from the records table that are not present in the destination schema."""
         if self.config.get("filter_columns"):
             columns_to_remove = set(records.schema.names) - set(destination_schema.as_arrow().names)
-            records = records.drop_columns(columns_to_remove)
-
+            return records.drop_columns(columns_to_remove)
         return records

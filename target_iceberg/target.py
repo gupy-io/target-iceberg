@@ -66,6 +66,7 @@ class TargetIceberg(Target):
         th.Property(
             "filter_columns",
             th.BooleanType,
+            default=False,
             description="Remove columns that not found in the target schema",
             required=False,
         ),
