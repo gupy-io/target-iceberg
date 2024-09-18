@@ -30,7 +30,7 @@ requests = "~=2.32.3"
 pyiceberg = "^0.7.1"
 pyarrow = "^17.0.0"
 meltano = "^3.5.1"
-pydantic = "2.9.0"
+pydantic = "2.9.1"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=8"
