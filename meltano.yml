@@ -32,6 +32,8 @@ plugins:
     - name: s3_access_key_id
     - name: s3_secret_access_key
     - name: s3_endpoint
+    - name: oauth2_server_uri
+    - name: scope
 
     settings_group_validation:
     - [catalog_type,warehouse,namespace]

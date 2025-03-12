@@ -70,6 +70,18 @@ class TargetIceberg(Target):
             description="Remove columns that not found in the target schema",
             required=False,
         ),
+        th.Property(
+            "oauth2_server_uri",
+            th.StringType,
+            description="OAuth2 server uri",
+            required=False,
+        ),
+        th.Property(
+            "scope",
+            th.StringType,
+            description="OAuth2 scope",
+            required=False,
+        ),
     ).to_dict()
 
     default_sink_class = IcebergSink
