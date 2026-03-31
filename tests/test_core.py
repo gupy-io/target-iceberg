@@ -19,7 +19,7 @@ from pyiceberg.types import (
 
 from singer_sdk.testing import get_target_test_class
 from singer_sdk.testing.templates import TargetFileTestTemplate
-from singer_sdk.testing.suites import TestSuite
+from singer_sdk.testing.suites import SingerTestSuite
 
 from target_iceberg.target import TargetIceberg
 from target_iceberg.catalog import get_catalog_config
@@ -195,7 +195,7 @@ StandardTargetTests = get_target_test_class(
     target_class=TargetIceberg,
     config=SAMPLE_CONFIG,
     custom_suites=[
-        TestSuite(
+        SingerTestSuite(
             kind="target", tests=[TargetPartitioningTest, TargetRemoveColumnsTest]
         )
     ],

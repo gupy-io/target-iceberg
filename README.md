@@ -4,7 +4,10 @@
 
 Build with the [Meltano Target SDK](https://sdk.meltano.com).
 
+## Requirements
 
+- **Python** 3.10, 3.11, or 3.12 (3.13 is not supported yet).
+- **Apache Iceberg** access via [PyIceberg](https://py.iceberg.apache.org/) with the **PyArrow** extra (installs `pyiceberg-core` for Arrow-based I/O). This project pins **PyArrow 21.x** alongside PyIceberg.
 
 ## Installation
 
@@ -34,8 +37,9 @@ pipx install git+https://github.com/ORG_NAME/target-iceberg.git@main
 | faker_config.seed | False    | None    | Value to seed the Faker generator for deterministic output: https://faker.readthedocs.io/en/master/#seeding-the-generator |
 | faker_config.locale | False    | None    | One or more LCID locale strings to produce localized output for: https://faker.readthedocs.io/en/master/#localization |
 | flattening_enabled | False    | None    | 'True' to enable schema flattening and automatically expand nested properties. |
-| flattening_max_depth | False    | None    | The max depth to flatten schemas. |A full list of supported settings and capabilities for this
-target is available by running:
+| flattening_max_depth | False    | None    | The max depth to flatten schemas. |
+
+A full list of supported settings and capabilities for this target is available by running:
 
 ```bash
 target-iceberg --about
@@ -67,10 +71,14 @@ Follow these instructions to contribute to this project.
 
 ### Initialize your Development Environment
 
+Use [Poetry](https://python-poetry.org/) (2.x recommended). Runtime and tooling dependencies are declared in `pyproject.toml`; development-only packages (for example `pytest` and `singer-sdk[testing]`) live in the **`dev` dependency group** (`[tool.poetry.group.dev.dependencies]`).
+
 ```bash
 pipx install poetry
 poetry install
 ```
+
+Ensure your environment uses Python 3.10–3.12 (see [Requirements](#requirements)).
 
 ### Create and Run Tests
 
@@ -99,13 +107,12 @@ _**Note:** This target will work in any Singer environment and does not require 
 Examples here are for convenience and to streamline end-to-end orchestration scenarios._
 
 
-Next, install Meltano (if you haven't already) and any needed plugins:
+Next, install Meltano (if you haven't already). This repo is tested with **Meltano 4.x** (for example 4.1.2); `poetry install` also resolves Meltano into the same environment if you prefer not to use `pipx`.
 
 ```bash
-# Install meltano
+# Install Meltano (e.g. via pipx)
 pipx install meltano
-# Initialize meltano within this directory
-cd target-iceberg
+# From the root of your clone of this repository
 meltano install
 ```
 
