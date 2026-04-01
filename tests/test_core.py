@@ -19,7 +19,7 @@ from pyiceberg.types import (
 
 from singer_sdk.testing import get_target_test_class
 from singer_sdk.testing.templates import TargetFileTestTemplate
-from singer_sdk.testing.suites import TestSuite
+from singer_sdk.testing.suites import SingerTestSuite
 
 from target_iceberg.target import TargetIceberg
 from target_iceberg.catalog import get_catalog_config
@@ -106,6 +106,11 @@ REQUIRED_TABLES = {
         NestedField(field_id=1, name="id", field_type=LongType()),
         NestedField(field_id=2, name="metric", field_type=LongType()),
     ),
+    "example_stream": Schema(
+        NestedField(field_id=1, name="id", field_type=LongType()),
+        NestedField(field_id=2, name="name", field_type=StringType()),
+        NestedField(field_id=3, name="email", field_type=StringType()),
+    ),
     "test_schema_updates": Schema(
         NestedField(field_id=1, name="id", field_type=LongType()),
         NestedField(field_id=2, name="a1", field_type=LongType()),
@@ -190,7 +195,7 @@ StandardTargetTests = get_target_test_class(
     target_class=TargetIceberg,
     config=SAMPLE_CONFIG,
     custom_suites=[
-        TestSuite(
+        SingerTestSuite(
             kind="target", tests=[TargetPartitioningTest, TargetRemoveColumnsTest]
         )
     ],

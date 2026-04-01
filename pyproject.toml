@@ -8,7 +8,6 @@ keywords = ["ELT", "Iceberg"]
 classifiers = [
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -17,18 +16,18 @@ license = "Apache-2.0"
 packages = [{ include = "target_iceberg" }]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
-singer-sdk = { version = "~=0.40.0" }
+python = ">=3.10,<3.13"
+singer-sdk = { version = "^0.48.0" }
 fs-s3fs = { version = "~=1.1.1", optional = true }
 requests = "~=2.32.3"
-pyiceberg = "^0.9.0"
-pyarrow = "^17.0.0"
-meltano = "^3.5.4"
+pyiceberg = { version = "^0.11.0", extras = ["pyarrow"] }
+pyarrow = "^21.0.0"
+meltano = "^4.1.2"
 pydantic = "2.10.6"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = ">=8"
-singer-sdk = { version = "~=0.40.0", extras = ["testing"] }
+singer-sdk = { version = "^0.48.0", extras = ["testing"] }
 
 [tool.poetry.extras]
 s3 = ["fs-s3fs"]
