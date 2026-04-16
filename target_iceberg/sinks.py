@@ -33,7 +33,7 @@ class IcebergSink(BatchSink):
         key_properties: list[str] | None,
     ) -> None:
         super().__init__(target, stream_name, schema, key_properties)
-        self.batch_max_size = self.config.get("batch_size", DEFAULT_BATCH_SIZE)
+
 
     def process_batch(self, context: dict) -> None:
         """Write out any prepped records and return once fully written.

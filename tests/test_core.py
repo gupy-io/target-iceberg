@@ -235,7 +235,7 @@ class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
 
 def test_batch_size_configuration():
     config = SAMPLE_CONFIG.copy()
-    config["batch_size"] = 42
+    config["batch_size_rows"] = 42
     target = TargetIceberg(config=config)
 
     sink = IcebergSink(
@@ -245,4 +245,4 @@ def test_batch_size_configuration():
         key_properties=[]
     )
 
-    assert sink.batch_max_size == 42
+    assert sink.max_size == 42
