@@ -83,7 +83,7 @@ class TargetIceberg(Target):
             required=False,
         ),
         th.Property(
-            "batch_size",
+            "batch_size_rows",
             th.IntegerType,
             default=DEFAULT_BATCH_SIZE,
             description="Maximum size of batches",
