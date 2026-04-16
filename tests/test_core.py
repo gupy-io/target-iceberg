@@ -22,6 +22,7 @@ from singer_sdk.testing.templates import TargetFileTestTemplate
 from singer_sdk.testing.suites import SingerTestSuite
 
 from target_iceberg.target import TargetIceberg
+from target_iceberg.sinks import IcebergSink
 from target_iceberg.catalog import get_catalog_config
 import uuid
 import pytest
@@ -230,3 +231,18 @@ class TestTargetIceberg(StandardTargetTests):  # type: ignore[misc, valid-type]
                 table_creation_config["partition_spec"] = partition_spec
 
             catalog.create_table(**table_creation_config)
+
+
+def test_batch_size_configuration():
+    config = SAMPLE_CONFIG.copy()
+    config["batch_size"] = 42
+    target = TargetIceberg(config=config)
+
+    sink = IcebergSink(
+        target=target,
+        stream_name="test_stream",
+        schema={"type": "object", "properties": {}},
+        key_properties=[]
+    )
+
+    assert sink.batch_max_size == 42
