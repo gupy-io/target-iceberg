@@ -7,8 +7,8 @@ from singer_sdk.target_base import Target
 
 from target_iceberg.sinks import (
     IcebergSink,
+    DEFAULT_BATCH_SIZE,
 )
-
 
 class TargetIceberg(Target):
     """Sample target for Iceberg."""
@@ -80,6 +80,13 @@ class TargetIceberg(Target):
             "scope",
             th.StringType,
             description="OAuth2 scope",
+            required=False,
+        ),
+        th.Property(
+            "batch_size",
+            th.IntegerType,
+            default=DEFAULT_BATCH_SIZE,
+            description="Maximum size of batches",
             required=False,
         ),
     ).to_dict()

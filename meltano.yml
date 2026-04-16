@@ -34,6 +34,7 @@ plugins:
     - name: s3_endpoint
     - name: oauth2_server_uri
     - name: scope
+    - name: batch_size
 
     settings_group_validation:
     - [catalog_type,warehouse,namespace]

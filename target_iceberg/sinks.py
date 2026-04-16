@@ -19,13 +19,11 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
-BATCH_SIZE = 10000
+DEFAULT_BATCH_SIZE = 10000
 
 
 class IcebergSink(BatchSink):
     """Iceberg target sink class."""
-
-    batch_max_size = BATCH_SIZE
 
     def __init__(
         self,
@@ -35,6 +33,7 @@ class IcebergSink(BatchSink):
         key_properties: list[str] | None,
     ) -> None:
         super().__init__(target, stream_name, schema, key_properties)
+        self.batch_max_size = self.config.get("batch_size", DEFAULT_BATCH_SIZE)
 
     def process_batch(self, context: dict) -> None:
         """Write out any prepped records and return once fully written.
